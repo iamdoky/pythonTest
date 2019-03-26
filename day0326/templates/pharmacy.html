@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=4fad44fd02108c60300ed66a07d19bc0"></script>
+	<script>
+    $(function(){
+        $("#w").click(function(){
+
+            var ww1 = $(this).attr('data-w1');
+            var ww2 = $(this).attr('data-w2');
+            alert(ww1);
+            alert(ww2);
+            var container = document.getElementById('map');
+		    var options = {
+		    	center: new daum.maps.LatLng(ww1, ww2),
+			    level: 3
+		    };
+		var map = new daum.maps.Map(container, options);
+        });
+	});
+	</script>
+</head>
+<body>
+<div id="map" style="width:500px;height:400px;"></div>
+<table border="1">
+    <tr>
+        <td>주소</td>
+        <td>이름</td>
+    </tr>
+    {% for m in data%}
+    <tr id="w" data-w1="{{m['w1']}}" data-w2 ="{{m['w2']}}">
+        <td>{{m['name']}}</td>
+        <td>{{m['addr']}}</td>
+    </tr>
+    {% endfor%}
+</table>
+</body>
+</html>
