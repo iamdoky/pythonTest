@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h2>서울 공영주차장</h2>
+    {% for item in arr %}
+        <a href="/detailPark/{{loop.index}}">{{item['name']}}({{item['addr']}})</a><br>
+    {% endfor %}
+
+</body>
+</html>

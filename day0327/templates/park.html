@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Park</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fad44fd02108c60300ed66a07d19bc0"></script>
+	<script>
+	$(function(){
+	    $('li').click(function(){
+	        var w1 = $(this).attr('data1');
+	        var w2 = $(this).attr('data2');
+	        var container = document.getElementById('map');
+		    var options = {
+			    center: new daum.maps.LatLng(w1, w2),
+			    level: 3
+		    };
+	    var map = new daum.maps.Map(container, options);
+	    });
+	});
+	</script>
+</head>
+<body>
+    <h2>서울 공영주차장</h2>
+    <div id="map" style="width:500px;height:400px;"></div>
+    <ul>
+        {% for park in data%}
+            <li data1="{{park['lat']}}" data2="{{park['lng']}}">{{park['name']}} - {{park['addr']}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
